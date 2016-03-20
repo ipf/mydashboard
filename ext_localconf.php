@@ -1,8 +1,5 @@
 <?php
-
-if (!defined('TYPO3_MODE')) {
-    die('Access denied.');
-}
+defined('TYPO3_MODE') or die();
 
 // Load the Widgets from "myDashboard"
 $GLOBALS ['TYPO3_CONF_VARS']['SC_OPTIONS']['ext/mydashboard/class.tx_mydashboard_widgetmgm.php']['addWidget']['serverinfo'] = 'EXT:mydashboard/widgets/class.tx_mydashboard_serverinfo.php:tx_mydashboard_serverinfo';
