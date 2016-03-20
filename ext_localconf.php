@@ -12,8 +12,3 @@ $GLOBALS ['TYPO3_CONF_VARS']['SC_OPTIONS']['ext/mydashboard/class.tx_mydashboard
 
 // Move to tt_news
 $GLOBALS ['TYPO3_CONF_VARS']['SC_OPTIONS']['ext/mydashboard/class.tx_mydashboard_widgetmgm.php']['addWidget']['latestnews'] = 'EXT:mydashboard/widgets/class.tx_mydashboard_latestnews.php:tx_mydashboard_latestnews';
-
-// Backend Home
-if (TYPO3_MODE == 'BE') {
-    $TYPO3_CONF_VARS['typo3/backend.php']['additionalBackendItems'][] = t3lib_extMgm::extPath('mydashboard').'class.tx_mydashboard_additionalToolbarIcons.php';
-}
