@@ -25,8 +25,8 @@
 *  This copyright notice MUST APPEAR in all copies of the script!
 ***************************************************************/
 
-require_once(t3lib_extMgm::extPath('mydashboard', 'templates/class.tx_mydashboard_template.php'));
-require_once(t3lib_extMgm::extPath('mydashboard', 'templates/interface.tx_mydashboard_widgetinterface.php'));
+require_once(\TYPO3\CMS\Core\Utility\ExtensionManagementUtility::extPath('mydashboard', 'templates/class.tx_mydashboard_template.php'));
+require_once(\TYPO3\CMS\Core\Utility\ExtensionManagementUtility::extPath('mydashboard', 'templates/interface.tx_mydashboard_widgetinterface.php'));
 
 class tx_mydashboard_latestnews extends tx_mydashboard_template implements tx_mydashboard_widgetinterface
 {
@@ -38,7 +38,7 @@ class tx_mydashboard_latestnews extends tx_mydashboard_template implements tx_my
     {
     
         // Check if tt_news is active
-        if (!t3lib_extMgm::isLoaded('tt_news')) {
+        if (!\TYPO3\CMS\Core\Utility\ExtensionManagementUtility::isLoaded('tt_news')) {
             return false;
         }
         
@@ -71,7 +71,7 @@ class tx_mydashboard_latestnews extends tx_mydashboard_template implements tx_my
         } # if
 
         $this->setTitle($title);
-        $this->setIcon(t3lib_extMgm::extRelPath('tt_news').'/ext_icon.gif');
+        $this->setIcon(\TYPO3\CMS\Core\Utility\ExtensionManagementUtility::extRelPath('tt_news').'/ext_icon.gif');
         
         return true;
     } # function - init

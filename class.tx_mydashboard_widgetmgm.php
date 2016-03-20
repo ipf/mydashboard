@@ -78,7 +78,7 @@ class tx_mydashboard_widgetmgm
             return $this->baseWidgets[$key];
         }
 
-        $this->baseWidgets[$key] = &t3lib_div::getUserObj($this->widgetsKeys[$key]);
+        $this->baseWidgets[$key] = &\TYPO3\CMS\Core\Utility\GeneralUtility::getUserObj($this->widgetsKeys[$key]);
 
         if (is_object($this->baseWidgets[$key]) && !in_array('tx_mydashboard_widgetinterface', class_implements($this->baseWidgets[$key]))) {
             echo 'Error: The Widget "<b>'.$key.'</b>" have to implement the interface "tx_mydashboard_widgetinterface"!<br />';
@@ -299,8 +299,8 @@ class tx_mydashboard_widgetmgm
      */
     private function getDefaultConf()
     {
-        require_once t3lib_extMgm::extPath('mydashboard').'class.tx_mydashboard_widgetmgm_defaultconf.php';
-        $obj = t3lib_div::makeInstance('tx_mydashboard_widgetmgm_defaultconf');
+        require_once \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::extPath('mydashboard').'class.tx_mydashboard_widgetmgm_defaultconf.php';
+        $obj = \TYPO3\CMS\Core\Utility\GeneralUtility::makeInstance('tx_mydashboard_widgetmgm_defaultconf');
 
         return $obj->getConf();
     } # function - getDefaultConf
