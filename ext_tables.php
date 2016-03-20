@@ -19,6 +19,5 @@ $tempColumns = array(
     ),
 );
 
-t3lib_div::loadTCA('be_users');
 \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addTCAcolumns('be_users', $tempColumns, 1);
 \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addToAllTCAtypes('be_users', 'tx_mydashboard_order;;;;1-1-1, tx_mydashboard_selfadmin');
