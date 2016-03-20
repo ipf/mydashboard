@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<T3locallang>
+	<meta type="array">
+		<type>database</type>
+		<description>Language labels for database tables/fields belonging to extension 'mydashboard'</description>
+	</meta>
+	<data type="array">
+		<languageKey index="default" type="array">
+			<label index="be_users.tx_mydashboard_config">Dashboard configuration</label>
+			<label index="be_users.tx_mydashboard_widgets">Widgets</label>
+
+			<label index="tx_mydashboard_widget">Widget</label>
+			<label index="tx_mydashboard_widget.class_name">Typ</label>
+			<label index="tx_mydashboard_widget.x">X</label>
+			<label index="tx_mydashboard_widget.y">Y</label>
+			<label index="tx_mydashboard_widget.configuration">Configuration</label>
+		</languageKey>
+	</data>
+</T3locallang>

@@ -35,6 +35,12 @@ use TYPO3\CMS\Extbase\Mvc\Controller\ActionController;
 class DashboardController extends ActionController
 {
 
+    /**
+     * @var \Tx\Mydashboard\Domain\Repository\WidgetRepository
+     * @inject
+     */
+    protected $widgetRepository;
+
     private $jsLoaded = array();
 
     /**
@@ -113,6 +119,7 @@ class DashboardController extends ActionController
         $this->view->assign('realName', $GLOBALS['BE_USER']->user['realName']);
         $this->view->assign('username', $GLOBALS['BE_USER']->user['username']);
 
+        $this->view->assign('widgets', $this->widgetRepository->findByBeUser($GLOBALS['BE_USER']->user['uid']));
 
 
         // Config an preload
@@ -124,32 +131,29 @@ class DashboardController extends ActionController
         $this->view->assign('userConf', $userConf);
 
         // Javascript
-        $js = '';
-        $container = array();
-        $newOrder = array();
-        for ($i = 0; $i < intval($userConf['config']['rows']); ++$i) {
-            if (!is_array($userConf['position'][$i])) {
-                continue;
-            }
-
-            $js .= 'Sortable.create("container'.$i.'",{tag: \'div\',dropOnEmpty:true,containment:[###CONTAINER###],constraint:false, onUpdate:sendNewOrder});'."\n";
-            $container[] = '"container'.$i.'"';
-            $newOrder[] = 'parms = Sortable.serialize("container'.$i.'", {name: \''.$i.'\'})+"&"+parms;';
-        }
-
-        $js = "<script type=\"text/javascript\">\n".str_replace('###CONTAINER###', implode(',', $container), $js)."
-		
-		function sendNewOrder(){
-			var parms = '';
-			".implode("\n", $newOrder)."
-			new Ajax.Request('index.php', {
-				parameters: { ajax: 1, action: 'reorder', data: parms },
-			});
-		}
-		</script>";
-
-        $this->view->assign('content', $content . $js);
-
+ //       $js = '';//
+ //       $container = array();
+ //       $newOrder = array();
+ //       for ($i = 0; $i < intval($userConf['config']['rows']); ++$i) {
+ //           if (!is_array($userConf['position'][$i])) {
+ //               continue;
+ //           }
+//
+ //           $js .= 'Sortable.create("container'.$i.'",{tag: \'div\',dropOnEmpty:true,containment:[###CONTAINER###],constraint:false, onUpdate:sendNewOrder});'."\n";
+ //           $container[] = '"container'.$i.'"';
+ //           $newOrder[] = 'parms = Sortable.serialize("container'.$i.'", {name: \''.$i.'\'})+"&"+parms;';
+ //       }
+//
+//        $js = "<script type=\"text/javascript\">\n".str_replace('###CONTAINER###', implode(',', $container), $js)."
+//		function sendNewOrder(){
+//			var parms = '';
+//			".implode("\n", $newOrder)."
+//			new Ajax.Request('index.php', {
+//				parameters: { ajax: 1, action: 'reorder', data: parms },
+//			});
+//		}
+//		</script>";
+//        $this->view->assign('content', $content . $js);
     }
 
     /**
