@@ -343,8 +343,3 @@ class tx_mydashboard_widgetmgm
         return true;
     } # function - loadUserConf	
 } # class - tx_mydashboard_widgetmgm
-
-if (defined('TYPO3_MODE') && $TYPO3_CONF_VARS[TYPO3_MODE]['XCLASS']['ext/mydashboard/class.tx_mydashboard_widgetmgm.php']) {
-    include_once $TYPO3_CONF_VARS[TYPO3_MODE]['XCLASS']['ext/mydashboard/class.tx_mydashboard_widgetmgm.php'];
-} # if
-;

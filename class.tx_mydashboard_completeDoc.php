@@ -32,8 +32,3 @@ class tx_mydashboard_completeDoc extends template
      */
     public $divClass = 'typo3-completeDoc';
 } # class - tx_mydashboard_completeDoc
-
-if (defined('TYPO3_MODE') && $TYPO3_CONF_VARS[TYPO3_MODE]['XCLASS']['ext/mydashboard/class.tx_mydashboard_completeDoc.php']) {
-    include_once $TYPO3_CONF_VARS[TYPO3_MODE]['XCLASS']['ext/mydashboard/class.tx_mydashboard_completeDoc.php'];
-} # if
-;

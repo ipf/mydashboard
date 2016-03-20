@@ -513,10 +513,6 @@ class tx_mydashboard_module1 extends t3lib_SCbase
     } # function - showConfig
 } # class - tx_mydashboard_module1
 
-if (defined('TYPO3_MODE') && $TYPO3_CONF_VARS[TYPO3_MODE]['XCLASS']['ext/mydashboard/mod1/index.php']) {
-    include_once $TYPO3_CONF_VARS[TYPO3_MODE]['XCLASS']['ext/mydashboard/mod1/index.php'];
-} # if
-
 # Get the Page
 $SOBE = t3lib_div::makeInstance('tx_mydashboard_module1');
 $SOBE->init();
