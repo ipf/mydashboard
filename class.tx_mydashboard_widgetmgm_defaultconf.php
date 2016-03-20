@@ -25,58 +25,57 @@
 *  This copyright notice MUST APPEAR in all copies of the script!
 ***************************************************************/
 
-class tx_mydashboard_widgetmgm_defaultconf {
-
-	
-	/*
-	 * Return the default conf for this extension
-	 */
-	public function getConf(){
-		return array(
-			'config' => array(
-				'layout' => 'tx_mydashboard_completeDoc',
-				'theme' => 'default',
-				'rows' => 3,
-			),
-			'items' => array(
-				'userstatsstartme1' => array(
-					'widgetkey' => 'userstats',
-					'config' => array(
-						'item_output' => 10,
-					),
-				),
-				'rssfeedstartme2' => array(
-					'widgetkey' => 'rssfeed',
-					'config' => array(
-						'item_limit' => 8,
-						'feed_title' => 'typo3blogger.de',
-						'feed_url' => 'http://typo3blogger.de/feed/',
-					),
-				),
-				'rssfeedstartme3' => array(
-					'widgetkey' => 'rssfeed',
-					'config' => array(
-						'item_limit' => 8,
-						'feed_title' => 'typo3.org',
-						'feed_url' => 'http://news.typo3.org/rss.xml',
-					),
-				),
-			),
-			'position' => array(
-				0 => array(
-					'rssfeedstartme2',
-					'rssfeedstartme3',
-				),
-				1 => array(
-					'userstatsstartme1',
-				),
-			),
-		);
-	} # function - getConf	
-	
+class tx_mydashboard_widgetmgm_defaultconf
+{
+    /*
+     * Return the default conf for this extension
+     */
+    public function getConf()
+    {
+        return array(
+            'config' => array(
+                'layout' => 'tx_mydashboard_completeDoc',
+                'theme' => 'default',
+                'rows' => 3,
+            ),
+            'items' => array(
+                'userstatsstartme1' => array(
+                    'widgetkey' => 'userstats',
+                    'config' => array(
+                        'item_output' => 10,
+                    ),
+                ),
+                'rssfeedstartme2' => array(
+                    'widgetkey' => 'rssfeed',
+                    'config' => array(
+                        'item_limit' => 8,
+                        'feed_title' => 'typo3blogger.de',
+                        'feed_url' => 'http://typo3blogger.de/feed/',
+                    ),
+                ),
+                'rssfeedstartme3' => array(
+                    'widgetkey' => 'rssfeed',
+                    'config' => array(
+                        'item_limit' => 8,
+                        'feed_title' => 'typo3.org',
+                        'feed_url' => 'http://news.typo3.org/rss.xml',
+                    ),
+                ),
+            ),
+            'position' => array(
+                0 => array(
+                    'rssfeedstartme2',
+                    'rssfeedstartme3',
+                ),
+                1 => array(
+                    'userstatsstartme1',
+                ),
+            ),
+        );
+    } # function - getConf	
 } # class - tx_mydashboard_widgetmgm_defaultconf
 
 if (defined('TYPO3_MODE') && $TYPO3_CONF_VARS[TYPO3_MODE]['XCLASS']['ext/mydashboard/class.tx_mydashboard_widgetmgm_defaultconf.php']) {
-	include_once($TYPO3_CONF_VARS[TYPO3_MODE]['XCLASS']['ext/mydashboard/class.tx_mydashboard_widgetmgm_defaultconf.php']);
+    include_once $TYPO3_CONF_VARS[TYPO3_MODE]['XCLASS']['ext/mydashboard/class.tx_mydashboard_widgetmgm_defaultconf.php'];
 } # if
-?>
+;

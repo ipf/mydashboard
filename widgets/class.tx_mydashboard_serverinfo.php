@@ -28,25 +28,25 @@
 require_once(t3lib_extMgm::extPath('mydashboard', 'templates/class.tx_mydashboard_template.php'));
 require_once(t3lib_extMgm::extPath('mydashboard', 'templates/interface.tx_mydashboard_widgetinterface.php'));
 
-class tx_mydashboard_serverinfo extends tx_mydashboard_template implements tx_mydashboard_widgetinterface {
+class tx_mydashboard_serverinfo extends tx_mydashboard_template implements tx_mydashboard_widgetinterface
+{
 
-	function getContent(){
-		return '<font color="red">No Content yet</font>';
-	}
+    public function getContent()
+    {
+        return '<font color="red">No Content yet</font>';
+    }
 
-	function init(){
-		$ico = t3lib_extMgm::extRelPath('mydashboard').'widgets/icon/tx_mydashboard_serverinfo.png';
-		$this->setIcon($ico);
-		$this->setTitle('Server Info');
-		
-		return true;
-	
-	}
-
-
+    public function init()
+    {
+        $ico = t3lib_extMgm::extRelPath('mydashboard').'widgets/icon/tx_mydashboard_serverinfo.png';
+        $this->setIcon($ico);
+        $this->setTitle('Server Info');
+        
+        return true;
+    }
 } # class - tx_mydashboard_serverinfo
 
 if (defined('TYPO3_MODE') && $TYPO3_CONF_VARS[TYPO3_MODE]['XCLASS']['ext/mydashboard/widgets/class.tx_mydashboard_serverinfo.php']) {
-	include_once($TYPO3_CONF_VARS[TYPO3_MODE]['XCLASS']['ext/mydashboard/widgets/class.tx_mydashboard_serverinfo.php']);
+    include_once($TYPO3_CONF_VARS[TYPO3_MODE]['XCLASS']['ext/mydashboard/widgets/class.tx_mydashboard_serverinfo.php']);
 } # if
-?>
+;
