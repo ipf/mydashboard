@@ -1,0 +1,50 @@
+<f:be.pageRenderer
+	includeCssFiles="{0: 'EXT:mydashboard/mod1/css/main.css', 1: 'EXT:mydashboard/mod1/css/theme-default.css'}"
+	includeJsFiles="{0: 'contrib/prototype/prototype.js', 1: 'EXT:mydashboard/mod1/functions.js'}"
+/>
+
+<f:link.action action="main">main</f:link.action>
+<f:link.action action="config">config</f:link.action>
+
+<p>Hallo
+	<strong>
+		<f:if condition="{realName}">{realName}</f:if>
+		({username})
+	</strong>
+</p>
+
+<h1><f:translate key="LLL:EXT:mydashboard/mod1/locallang.xml:title" /></h1>
+
+<div class="widgets">
+	<f:for each="{userConf.position}" as="columns" iteration="iterator">
+		<div id="container{iterator.index}">
+			<f:for each="{columns}" as="widgetKey">
+		        <div class="widget" id="widget_{widgetKey}'">
+			        <h2 onmouseover="showOptions('widget_{widgetKey}')" onmouseout="hideOptions('widget_{widgetKey}');">
+				        <span class="icon">
+					        '.$this->mgm->renderIcon($widget).'
+				        </span>
+				        <span class="text">
+					        '.$widget->getTitle().'
+				        </span>
+						<a href="#" class="delete" id="widget_{widgetKey}_delete" style="display: none" onclick="deleteWidget('{widgetKey}')">Delete</a>
+						<a href="#" class="config" id="widget_'.$widgetKey.'_config" style="display: none" onclick="configWidget(\''.$widgetKey.'\')">Config</a>';
+						<a href="#" class="refresh" id="widget_'.$widgetKey.'_refresh" style="display: none" onclick="refreshWidget(\''.$widgetKey.'\')">Refresh</a>';
+					</h2>
+
+					<div class="content" id="widget_{widgetKey}_content">
+						$widget->getContent()
+					</div>
+				</div>
+
+		        foreach ($widget->getJSFiles() as $file) {
+		            if (!in_array($file, $this->jsLoaded)) {
+		                $this->jsLoaded[] = $file;
+		                $this->doc->JScode .= '<script type="text/javascript" src="'.$file.'"></script>';
+		            } # if
+		        } # foreach
+
+			</f:for>
+		</div>
+	</f:for>
+</div>

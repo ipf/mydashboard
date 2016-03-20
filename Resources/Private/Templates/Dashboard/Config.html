@@ -1,0 +1,76 @@
+<f:be.pageRenderer
+	includeCssFiles="{0: 'EXT:mydashboard/mod1/css/theme-default.css'}"
+	includeJsFiles="{0: 'contrib/prototype/prototype.js', 1: 'EXT:mydashboard/mod1/functions.js'}"
+/>
+
+<f:debug>{_all}</f:debug>
+
+<script language="javascript" type="text/javascript">
+script_ended = 0;
+function jumpToUrl(URL)	{
+	document.location = URL;
+}
+</script>
+
+<f:link.action action="main">main</f:link.action>
+<f:link.action action="config">config</f:link.action>
+
+<h1><f:translate key="LLL:EXT:mydashboard/mod1/locallang.xml:config" /></h1>
+
+<f:if condition="{startModul} != 'user_txmydashboardM1'">
+	<p><span class="notice">Notice:</span>
+	The Dashboard is not the startpage (current user)!
+	<f:link.action action="setStartModule">Click here</f:link.action>
+	to set the Dashboard as startpage.</p>
+</f:if>
+
+<f:form action="saveConfiguration">
+	<table>
+		<tr>
+			<td>Widget Cols:</td>
+			<td>
+				<f:form.textfield name="rows" value="{config.rows}" />
+			</td>
+		</tr>
+		<tr>
+			<td>Dashboard Theme:</td>
+			<td>
+				<f:form.textfield name="rows" value="{config.theme}" />
+			</td>
+		</tr>
+		<tr>
+			<td>&nbsp;</td>
+			<td><input type="submit"/></td>
+		</tr>
+	</table>
+</f:form>
+
+
+<h3>Add Widgets (always to the left row)</h3>
+<f:debug>{widgets}</f:debug>
+
+<table>
+	<f:for each="{widgets}" as="widget">
+	    <tr>
+		    <td>
+			    $this->mgm->renderIcon($widget)
+		    </td>
+		    <td>
+			    {widget.title}
+		    </td>
+		    <td>
+			    <f:link.action action="addWidget" arguments="{widgetKey: widget.title}">
+				    add Widget
+			    </f:link.action>
+		    </td>
+	    </tr>
+	</f:for>
+</table>
+
+
+
+
+<script language="javascript" type="text/javascript">
+	script_ended = 1;
+	if (top.fsMod) top.fsMod.recentIds["web"] = 0;
+</script>

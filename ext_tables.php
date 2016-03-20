@@ -1,10 +1,24 @@
 <?php
 defined('TYPO3_MODE') or die();
 
+if (TYPO3_MODE === 'BE') {
 
-if (TYPO3_MODE == 'BE') {
-    t3lib_extMgm::addModule('user', 'txmydashboardM1', '', t3lib_extMgm::extPath($_EXTKEY).'mod1/');
-} # if
+    // Module Tools->Log
+    \TYPO3\CMS\Extbase\Utility\ExtensionUtility::registerModule(
+        'Tx.Mydashboard',
+        'user',
+        'mydashboard',
+        '',
+        array(
+            'Dashboard' => 'main, config, addWidget, saveConfiguration, setStartModule, ajax'
+        ),
+        array(
+            'access' => 'user,group',
+            'icon' => 'EXT:mydashboard/mod1/moduleicon.gif',
+            'labels' => 'LLL:EXT:mydashboard/mod1/locallang_mod.xml',
+        )
+    );
+}
 
 $tempColumns = array(
     'tx_mydashboard_config' => array(

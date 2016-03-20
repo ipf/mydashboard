@@ -34,7 +34,6 @@ class tx_mydashboard_widgetmgm_defaultconf
     {
         return array(
             'config' => array(
-                'layout' => 'tx_mydashboard_completeDoc',
                 'theme' => 'default',
                 'rows' => 3,
             ),

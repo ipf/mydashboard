@@ -1,4 +1,6 @@
 <?php
+namespace Tx\Mydashboard\Manager;
+
 /***************************************************************
 *  Copyright notice
 *
@@ -25,7 +27,7 @@
 *  This copyright notice MUST APPEAR in all copies of the script!
 ***************************************************************/
 
-class tx_mydashboard_widgetmgm
+class Widgetmgm
 {
     /* Private Attributes */
     private $widgets = array();
@@ -328,7 +330,14 @@ class tx_mydashboard_widgetmgm
      */
     public function loadUserConf($userID)
     {
-        $res = $GLOBALS['TYPO3_DB']->exec_SELECTquery('*', 'be_users', 'uid='.intval($userID), '', '', 1);
+        $res = $GLOBALS['TYPO3_DB']->exec_SELECTquery(
+            '*',
+            'be_users',
+            'uid='.intval($userID),
+            '',
+            '',
+            1
+        );
         if (!$GLOBALS['TYPO3_DB']->sql_num_rows($res)) {
             return false;
         }
@@ -341,5 +350,5 @@ class tx_mydashboard_widgetmgm
         $this->userConf = (is_array($conf)) ? $conf : $this->getDefaultConf();
 
         return true;
-    } # function - loadUserConf	
-} # class - tx_mydashboard_widgetmgm
+    }
+}
