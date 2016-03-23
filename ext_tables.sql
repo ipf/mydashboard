@@ -16,6 +16,7 @@ CREATE TABLE tx_mydashboard_domain_model_widget (
 
 	sorting int(10) DEFAULT '0' NOT NULL,
 	deleted tinyint(4) DEFAULT '0' NOT NULL,
+	hidden tinyint(4) DEFAULT '0' NOT NULL,
 
 	PRIMARY KEY (uid),
 	KEY parent (pid,deleted,hidden,sorting)
